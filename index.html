@@ -23,62 +23,115 @@ como um serviço comercial. Este serviço é fornecido <strong>"NO ESTADO EM QUE
 
 <br>
 
+<strong>O que o Aplicativo faz</strong>
+<p>
+O <strong>Não Me Ligue</strong> é uma ferramenta de produtividade e segurança que ajuda o usuário a reduzir chamadas indesejadas
+de números desconhecidos. O Aplicativo silencia ou bloqueia automaticamente chamadas de números que
+<b>não estão salvos na agenda de contatos do usuário</b>, permitindo que apenas chamadas de contatos conhecidos
+toquem normalmente.
+</p>
+
+<br>
+
 <strong>Coleta e Uso de Informações</strong>
 <p>
-O Aplicativo coleta informações automaticamente quando você faz o download e o utiliza.
+Algumas informações são coletadas de forma automática quando você instala e utiliza o Aplicativo.
 Essas informações podem incluir:
 </p>
 
 <ul>
-  <li>endereço de Protocolo de Internet (IP);</li>
-  <li>dados de uso do Aplicativo (páginas acessadas, data, hora e tempo de uso);</li>
-  <li>tempo total de uso do Aplicativo;</li>
-  <li>sistema operacional do dispositivo móvel.</li>
+  <li>endereço de Protocolo de Internet (IP) do dispositivo;</li>
+  <li>dados de uso do Aplicativo (telas acessadas, datas e horários de uso);</li>
+  <li>informações básicas sobre o dispositivo (modelo, sistema operacional, versão do app);</li>
+  <li>eventos de erro e travamento do Aplicativo.</li>
 </ul>
 
-<br>
-
 <p>
-O Aplicativo <strong>não coleta informações precisas de localização</strong>.
-</p>
-
-<br>
-
-<p>
-As informações coletadas são utilizadas para:
+Essas informações são utilizadas para:
 </p>
 
 <ul>
   <li>garantir o funcionamento correto do Aplicativo;</li>
   <li>melhorar a experiência e a estabilidade do serviço;</li>
-  <li>análises estatísticas de forma agregada e anonimizada;</li>
-  <li>comunicações essenciais relacionadas ao funcionamento do Aplicativo.</li>
+  <li>realizar análises estatísticas em formato agregado e anonimizado;</li>
+  <li>comunicações essenciais relacionadas ao funcionamento do Aplicativo
+    (por exemplo, avisos importantes de segurança ou funcionamento).</li>
+</ul>
+
+<p>
+O Aplicativo <strong>não coleta informações precisas de localização geográfica</strong>.
+</p>
+
+<br>
+
+<strong>Permissões do Dispositivo e Acesso a Contatos</strong>
+<p>
+Para que o Aplicativo funcione corretamente, algumas permissões do sistema Android são necessárias:
+</p>
+
+<ul>
+  <li>
+    <strong>Acesso à agenda de contatos (READ_CONTACTS)</strong><br>
+    Utilizado para ler a lista de contatos do dispositivo e formar uma "lista branca" de números permitidos.
+    Quando uma chamada é recebida, o Aplicativo verifica localmente se o número está salvo na agenda
+    para decidir se a chamada será silenciada ou bloqueada.<br>
+    Os dados da agenda (nomes e números dos contatos) são acessados <strong>apenas localmente</strong>,
+    <strong>não são enviados para servidores do Provedor do Serviço</strong>,
+    <strong>não são armazenados em nuvem</strong> e <strong>não são compartilhados com terceiros</strong>.
+  </li>
+
+  <li>
+    <strong>Papel de identificador/bloqueador de chamadas (Call Screening / Role de app de chamadas)</strong><br>
+    Esta permissão permite que o Aplicativo receba notificações do sistema quando uma chamada está chegando
+    e decida, de acordo com as regras configuradas, se a chamada deve tocar, ser silenciada ou bloqueada.
+    As informações da chamada são usadas apenas em tempo real, com a finalidade exclusiva de aplicar
+    as regras de bloqueio definidas pelo usuário.
+  </li>
+
+  <li>
+    <strong>Notificações (POST_NOTIFICATIONS)</strong><br>
+    Utilizada para exibir um lembrete persistente na barra de status informando que a proteção está ativa
+    e que o serviço de bloqueio está em execução em segundo plano.
+  </li>
+</ul>
+
+<p>
+Em algumas versões do Android, o Aplicativo também pode solicitar permissões relacionadas ao estado da chamada
+(por exemplo, leitura do estado de chamada). Esses dados são utilizados somente para detectar eventos de chamada
+(recebendo, em andamento, encerrada) e <strong>não incluem gravação ou conteúdo de áudio da chamada</strong>.
+</p>
+
+<br>
+
+<strong>Conta, Autenticação e Assinatura</strong>
+<p>
+Para oferecer recursos como sincronização de assinatura e gerenciamento de conta,
+o Aplicativo utiliza serviços de terceiros para autenticação e cobrança:
+</p>
+
+<ul>
+  <li>
+    <strong>Autenticação (Firebase Auth)</strong><br>
+    Ao criar uma conta ou fazer login, podem ser coletados seu nome, endereço de e-mail e,
+    opcionalmente, foto de perfil, apenas para identificação do usuário,
+    controle de acesso e gestão da assinatura.
+  </li>
+  <li>
+    <strong>Assinatura e pagamentos (RevenueCat / Google Play)</strong><br>
+    A gestão de assinaturas é feita por meio da Google Play Store e de um serviço intermediário
+    de gerenciamento de assinaturas. O Provedor do Serviço <strong>não tem acesso aos dados completos
+    do seu cartão de crédito</strong>. Os pagamentos são processados pela própria Google Play,
+    de acordo com os termos e políticas dela.
+  </li>
 </ul>
 
 <br>
 
-<strong>Permissões do Dispositivo</strong>
+<strong>Logs e Diagnósticos</strong>
 <p>
-O Aplicativo pode solicitar a permissão <strong>READ_PHONE_STATE</strong>,
-exclusivamente para detectar o estado das chamadas telefônicas
-(como chamada recebida, em andamento ou encerrada),
-permitindo o correto funcionamento das funcionalidades de bloqueio de chamadas.
-</p>
-
-<p>
-O Aplicativo <strong>não coleta, não armazena e não compartilha</strong>
-informações sensíveis do telefone, tais como número de telefone,
-IMEI, contatos ou histórico de chamadas.
-Os dados acessados por meio dessa permissão são utilizados apenas em tempo real
-e não são persistidos.
-</p>
-
-<br>
-
-<p>
-Para determinadas funcionalidades, o Provedor do Serviço poderá solicitar
-informações de identificação pessoal, como endereço de e-mail,
-exclusivamente para contato e suporte.
+O Aplicativo pode coletar e enviar registros de erro (logs) e relatórios de falhas de forma anônima,
+por meio de serviços como o Firebase Crashlytics, com o objetivo exclusivo de melhorar a estabilidade,
+desempenho e segurança do Aplicativo.
 </p>
 
 <br>
@@ -86,105 +139,116 @@ exclusivamente para contato e suporte.
 <strong>Acesso por Terceiros</strong>
 <p>
 Apenas dados agregados e anonimizados podem ser compartilhados com serviços de terceiros
-para fins de análise e melhoria do Aplicativo.
+para fins de análise e melhoria do Aplicativo. Esses terceiros são obrigados a tratar esses dados
+de acordo com esta Política e com a legislação aplicável.
 </p>
 
 <p>
-O Aplicativo utiliza os seguintes serviços de terceiros:
+O Aplicativo pode utilizar, entre outros, os seguintes serviços de terceiros:
 </p>
 
 <ul>
   <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer">Google Play Services</a></li>
-  <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Google Analytics for Firebase</a></li>
-  <li><a href="https://firebase.google.com/support/privacy/" target="_blank" rel="noopener noreferrer">Firebase Crashlytics</a></li>
+  <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase (incluindo Authentication e Crashlytics)</a></li>
+  <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat</a></li>
 </ul>
-
-<br>
 
 <p>
 O Provedor do Serviço poderá divulgar informações quando:
 </p>
 
 <ul>
-  <li>exigido por lei ou ordem judicial;</li>
+  <li>exigido por lei ou por ordem judicial competente;</li>
   <li>necessário para proteger direitos, segurança ou prevenir fraudes;</li>
-  <li>realizado com prestadores de serviço que sigam esta Política.</li>
+  <li>necessário para operação do serviço com prestadores que sigam padrões de segurança compatíveis com esta Política.</li>
 </ul>
-
-<br>
-
-<strong>Direito de Cancelamento (Opt-out)</strong>
-<p>
-Você pode interromper a coleta de informações desinstalando o Aplicativo
-a qualquer momento.
-</p>
 
 <br>
 
 <strong>Política de Retenção de Dados</strong>
 <p>
-Os dados são mantidos apenas enquanto necessários para o funcionamento do Aplicativo
-ou conforme exigido por lei.
+Os dados pessoais são mantidos apenas pelo tempo necessário para:
+</p>
+
+<ul>
+  <li>prestar o serviço e cumprir as funcionalidades do Aplicativo;</li>
+  <li>cumprir obrigações legais e regulatórias;</li>
+  <li>resolver disputas e fazer valer contratos.</li>
+</ul>
+
+<p>
+Dados de uso e logs de erro podem ser mantidos por um período razoável para análise de desempenho
+e segurança, em formato agregado e anonimizado sempre que possível.
 </p>
 
 <br>
 
 <strong>Exclusão de Conta e Dados do Usuário</strong>
 <p>
-O usuário pode, a qualquer momento, solicitar a exclusão de sua conta
-e dos dados pessoais associados ao uso do Aplicativo.
+O usuário pode, a qualquer momento, solicitar a exclusão de sua conta e dos dados pessoais associados
+ao uso do Aplicativo.
 </p>
 
 <p>
-Para realizar a solicitação, o usuário deverá entrar em contato com o Provedor do Serviço
-por meio do e-mail de suporte <strong>naomeliguesuporte@gmail.com</strong>,
-manifestando expressamente o pedido de exclusão da conta.
+Sempre que disponível, a exclusão poderá ser feita diretamente no Aplicativo
+por meio da funcionalidade de gerenciamento de conta. Alternativamente,
+o usuário poderá entrar em contato com o Provedor do Serviço pelo e-mail de suporte
+<strong>naomeliguesuporte@gmail.com</strong>, manifestando expressamente o pedido de exclusão da conta.
 </p>
 
 <p>
 Após o recebimento da solicitação, a exclusão da conta e dos dados pessoais será realizada,
-observados os prazos legais aplicáveis e eventuais obrigações legais de retenção.
+observados os prazos legais aplicáveis e eventuais obrigações de retenção impostas por lei ou por terceiros
+(como a loja de aplicativos).
 </p>
 
 <br>
 
 <strong>Crianças</strong>
 <p>
-O Aplicativo não se destina a menores de 13 anos.
-Dados fornecidos indevidamente por crianças serão removidos assim que identificados.
+O Aplicativo não se destina a menores de 13 anos. O Provedor do Serviço não coleta,
+de forma intencional, dados pessoais de crianças. Caso seja identificado que dados de crianças
+foram coletados indevidamente, eles serão removidos assim que possível após a ciência do fato.
 </p>
 
 <br>
 
 <strong>Segurança</strong>
 <p>
-São adotadas medidas técnicas e organizacionais razoáveis
-para proteger os dados contra acesso não autorizado,
-uso indevido ou divulgação.
+São adotadas medidas técnicas e organizacionais razoáveis para proteger os dados
+contra acesso não autorizado, uso indevido, alteração ou divulgação não autorizada.
+No entanto, nenhum método de transmissão ou armazenamento eletrônico é 100% seguro,
+e, portanto, não é possível garantir segurança absoluta.
 </p>
 
 <br>
 
 <strong>Base Legal para o Tratamento de Dados (LGPD)</strong>
 <p>
-O tratamento de dados pessoais ocorre com base no
-<strong>consentimento do usuário</strong>
-e na necessidade de execução das funcionalidades do Aplicativo,
-conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).
+O tratamento de dados pessoais ocorre com base em:
 </p>
+
+<ul>
+  <li><strong>consentimento do usuário</strong>, quando aplicável;</li>
+  <li><strong>execução de contrato</strong> e de procedimentos preliminares relacionados ao uso do Aplicativo;</li>
+  <li><strong>legítimo interesse</strong>, para finalidades como segurança, prevenção à fraude e melhoria do serviço;</li>
+  <li>cumprimento de <strong>obrigações legais</strong>.</li>
+</ul>
 
 <br>
 
 <strong>Direitos do Titular dos Dados</strong>
 <p>
-Você pode, a qualquer momento:
+Nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você pode, a qualquer momento:
 </p>
 
 <ul>
-  <li>acessar seus dados;</li>
-  <li>corrigir dados incorretos;</li>
-  <li>solicitar a exclusão;</li>
-  <li>revogar o consentimento.</li>
+  <li>acessar seus dados pessoais tratados;</li>
+  <li>corrigir dados incompletos, inexatos ou desatualizados;</li>
+  <li>solicitar a anonimização, bloqueio ou eliminação de dados desnecessários ou excessivos;</li>
+  <li>solicitar a exclusão dos dados pessoais tratados com base no consentimento;</li>
+  <li>revogar o consentimento, quando esta for a base legal aplicável;</li>
+  <li>solicitar informações sobre o compartilhamento de dados com terceiros.</li>
 </ul>
 
 <p>
@@ -196,8 +260,10 @@ Para exercer seus direitos, entre em contato pelo e-mail
 
 <strong>Alterações nesta Política</strong>
 <p>
-Esta Política pode ser atualizada periodicamente.
-Recomenda-se a revisão regular.
+Esta Política de Privacidade poderá ser atualizada periodicamente.
+Recomenda-se que o usuário revise esta página de tempos em tempos
+para se manter informado sobre eventuais alterações.
+O uso contínuo do Aplicativo após qualquer alteração constitui aceitação da nova versão da Política.
 </p>
 
 <br>
@@ -210,7 +276,7 @@ Vigente a partir de <strong>15 de janeiro de 2026</strong>.
 
 <strong>Contato</strong>
 <p>
-Dúvidas sobre esta Política podem ser enviadas para
+Dúvidas sobre esta Política de Privacidade podem ser enviadas para
 <strong>naomeliguesuporte@gmail.com</strong>.
 </p>
 
